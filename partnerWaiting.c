@@ -68,8 +68,8 @@ void turn(int angle, short speed)  // Steven Mostovoy
 }
 
 task main()
-{ /*
-	/*waitForStart();
+{
+	waitForStart();
 	wait1Msec(10000);
 	motor[plow] = 75;
 	motor[armLeft] = 100;
@@ -77,7 +77,7 @@ task main()
 	wait1Msec(100);
 	motor[plow] = 0;
 	motor[armLeft] = 0;
-	motor[armRight] = 0;*/
+	motor[armRight] = 0;
 	bool nope = false;
 
 	nMotorEncoder[driveLeft] = 0;
