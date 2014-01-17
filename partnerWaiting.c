@@ -169,6 +169,7 @@ task main()
 	}
 	motor[driveLeft] = 0;
 	motor[driveRight] = 0;
+
 	/*if(!nope)
 	{
 		while(nMotorEncoder[driveLeft] > (-temp - 300))

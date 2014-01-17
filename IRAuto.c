@@ -1,6 +1,7 @@
 #pragma config(Hubs,  S1, HTMotor,  HTMotor,  HTMotor,  HTServo)
 #pragma config(Sensor, S2,     GYRO,           sensorI2CHiTechnicGyro)
 #pragma config(Sensor, S3,     IR,             sensorHiTechnicIRSeeker1200)
+#pragma config(Sensor, S4,     Ultra,          sensorNone)
 #pragma config(Motor,  mtr_S1_C1_1,     driveRight,    tmotorTetrix, openLoop, reversed)
 #pragma config(Motor,  mtr_S1_C1_2,     driveLeft,     tmotorTetrix, openLoop, encoder)
 #pragma config(Motor,  mtr_S1_C2_1,     armRight,      tmotorTetrix, openLoop, reversed)
@@ -90,7 +91,7 @@ task main()
 		//else
 		//{
 
-		if(nMotorEncoder[driveLeft] > 6350)
+		if(nMotorEncoder[driveLeft] > 5500)
 		{
 			nope = true;
 			break;
@@ -108,7 +109,7 @@ task main()
 
 	if(!nope)
 	{
-		while(nMotorEncoder[driveLeft] < (temp+0))
+		while(nMotorEncoder[driveLeft] < (temp+200))
 		{
 			motor[driveLeft] = 100;
 			motor[driveRight] = 100;
@@ -116,21 +117,28 @@ task main()
 
 		motor[driveLeft] = 0;
 		motor[driveRight] = 0;
-		wait1Msec(750);
+		wait1Msec(500);
 	}
-
-	writeDebugStreamLine("%d", nMotorEncoder[driveLeft]);
 
 	servo[cube] = 0;
 	wait1Msec(1000);
 	servo[cube] = 125;
 	wait1Msec(1000);
 
+	while(SensorValue[Ultra] > 25)
+	{
+		//riteDebugStreamLine("%d", SensorValue[Ultra]);
+		motor[driveLeft] = -100;
+		motor[driveRight] = -100;
+	}
+	motor[driveLeft] = 0;
+	motor[driveRight] = 0;
+
 	nMotorEncoder[driveLeft] = 0;
 
-	if(!nope)
+	/*if(!nope)
 	{
-		while(nMotorEncoder[driveLeft] > (-temp-0))
+		while(nMotorEncoder[driveLeft] > (-temp- 300))
 		{
 			motor[driveLeft] = -100;
 			motor[driveRight] = -100;
@@ -142,7 +150,7 @@ task main()
 	}
 	else
 	{
-		while(nMotorEncoder[driveLeft] > (-6350+300))
+		while(nMotorEncoder[driveLeft] > (-5300-150))
 		{
 			motor[driveLeft] = -100;
 			motor[driveRight] = -100;
@@ -151,33 +159,38 @@ task main()
 		motor[driveLeft] = 0;
 		motor[driveRight] = 0;
 		wait1Msec(750);
-	}
+	}*/
 
 	turn(-30,75);
 
 	nMotorEncoder[driveLeft] = 0;
-
-	while(nMotorEncoder[driveLeft] > -4500)
+	/*while(nMotorEncoder[driveLeft] > -4500)
 	{
 		motor[driveLeft] = -100;
 		motor[driveRight] = -100;
-	}
+	}*/
+
+	motor[driveLeft] = -100;
+	motor[driveRight] = -100;
+	wait1Msec(1500);
 
 	motor[driveLeft] = 0;
 	motor[driveRight] = 0;
-	wait1Msec(750);
+	wait1Msec(500);
 
 	turn(-65,75);
 
 	nMotorEncoder[driveLeft] = 0;
 
-	while(nMotorEncoder[driveLeft] > -3800)
+	/*while(nMotorEncoder[driveLeft] > -3800)
 	{
 		motor[driveLeft] = -100;
 		motor[driveRight] = -100;
-	}
+	}*/
+	motor[driveLeft] = -100;
+	motor[driveRight] = -100;
+	wait1Msec(1500);
 
 	motor[driveLeft] = 0;
 	motor[driveRight] = 0;
-	wait1Msec(750);
 }
