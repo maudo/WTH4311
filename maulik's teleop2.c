@@ -91,7 +91,7 @@ task main()
 			servo[wrist] = 255; // pickup position
 		//servo[wrist] -= 5;
 		else if(joy2Btn(3))
-			servo[wrist] = 0; //drop position
+			servo[wrist] = 5; //drop position
 
 		wait1Msec(20);
 	}

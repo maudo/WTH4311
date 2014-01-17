@@ -125,18 +125,18 @@ task main()
 	servo[cube] = 125;
 	wait1Msec(1000);
 
-	while(SensorValue[Ultra] > 25)
+	/*while(SensorValue[Ultra] > 25)
 	{
 		//riteDebugStreamLine("%d", SensorValue[Ultra]);
 		motor[driveLeft] = -100;
 		motor[driveRight] = -100;
-	}
+	}*/
 	motor[driveLeft] = 0;
 	motor[driveRight] = 0;
 
 	nMotorEncoder[driveLeft] = 0;
 
-	/*if(!nope)
+	if(!nope)
 	{
 		while(nMotorEncoder[driveLeft] > (-temp- 300))
 		{
@@ -159,7 +159,7 @@ task main()
 		motor[driveLeft] = 0;
 		motor[driveRight] = 0;
 		wait1Msec(750);
-	}*/
+	}
 
 	turn(-30,75);
 
