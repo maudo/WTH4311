@@ -138,7 +138,7 @@ task main()
 
 	if(!nope)
 	{
-		while(nMotorEncoder[driveLeft] > (-temp- 300))
+		while(nMotorEncoder[driveLeft] > (-temp- 80))
 		{
 			motor[driveLeft] = -100;
 			motor[driveRight] = -100;
@@ -150,7 +150,7 @@ task main()
 	}
 	else
 	{
-		while(nMotorEncoder[driveLeft] > (-5300-150))
+		while(nMotorEncoder[driveLeft] > (-5300-100))
 		{
 			motor[driveLeft] = -100;
 			motor[driveRight] = -100;
@@ -189,7 +189,7 @@ task main()
 	}*/
 	motor[driveLeft] = -100;
 	motor[driveRight] = -100;
-	wait1Msec(1500);
+	wait1Msec(1700);
 
 	motor[driveLeft] = 0;
 	motor[driveRight] = 0;

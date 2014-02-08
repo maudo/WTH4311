@@ -84,11 +84,28 @@ task main()
 		else if(joystick.joy2_y1 < -threshold)
 			servo[wrist] -= 5;
 		else if(joy2Btn(1))
-			servo[wrist] = 225v 	; //200 starting position
+			servo[wrist] = 200;  //155 //starting position
 		//servo[wrist] += 5;
 		else if(joy2Btn(4))
 			servo[wrist] = 255; // pickup position
+		else if (joy2Btn(2))
+		{
+			for(int limit = 45; limit <= 245; limit = limit + 5)  //target:245, goes to 45. Distance left:200 servo clicks. Augment:+5 wait: 40ms
+			{																											//200/5 = 40 * 40 = 1600ms or 1.6s for target to be reached
+				servo[wrist] = limit;
+				wait1Msec(40);
+			}
+		}
+		/*servo[wrist] = 20;
+		wait1Msec(20)
+		servo[wrist] = 30;
+		wait1Msec(20)
+		servo[wrist] = 40;
+		wait1Msec(20)
+		servo[wrist] = 50;
+		wait1Msec(20)*/
 		//servo[wrist] -= 5;
+
 		else if(joy2Btn(3))
 			servo[wrist] = 5; //drop position
 

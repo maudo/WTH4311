@@ -71,9 +71,9 @@ task main()
 {
 	waitForStart();
 	wait1Msec(10000);
-	motor[plow] = 75;
 	motor[armLeft] = 100;
 	motor[armRight] = 100;
+	motor[plow] = 75;
 	wait1Msec(100);
 	motor[plow] = 0;
 	motor[armLeft] = 0;
@@ -98,11 +98,7 @@ task main()
 
 	//time1[T1] = 0;
 
-	motor[driveLeft] = 0;
-	motor[driveRight] = 0;
-	wait1Msec(500);
-
-	while(abs(nMotorEncoder[driveLeft]) < 1800)
+	while(abs(nMotorEncoder[driveLeft]) < 2050) //1800
 		{
 			motor[driveLeft] = -100;
 			motor[driveRight] = 100;
