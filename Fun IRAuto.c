@@ -125,9 +125,7 @@ task main()
 			motor[driveRight] = 100;
 		}
 
-		motor[driveLeft] = 0;
-		motor[driveRight] = 0;
-		wait1Msec(500);
+		stahp(500);
 	}
 
 	servo[cube] = 0;
@@ -154,9 +152,7 @@ task main()
 			motor[driveRight] = -100;
 		}
 
-		motor[driveLeft] = 0;
-		motor[driveRight] = 0;
-		wait1Msec(750);
+		stahp(750);
 	}
 	else
 	{
@@ -166,9 +162,7 @@ task main()
 			motor[driveRight] = -100;
 		}
 
-		motor[driveLeft] = 0;
-		motor[driveRight] = 0;
-		wait1Msec(750);
+		stahp(750);
 	}
 
 	turn(-30,75);
@@ -184,9 +178,7 @@ task main()
 	motor[driveRight] = -100;
 	wait1Msec(1500);
 
-	motor[driveLeft] = 0;
-	motor[driveRight] = 0;
-	wait1Msec(500);
+	stahp(500);
 
 	turn(-65,75);
 
