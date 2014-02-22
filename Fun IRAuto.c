@@ -78,7 +78,6 @@ void initialization()
 }
 void stahp (int time)
 {
-	time = time*1000;
 	motor[driveLeft] = 0;
 	motor[driveRight] = 0;
 	wait1Msec(time);
@@ -88,13 +87,14 @@ task main()
 	waitForStart();
 	initialization();
 	bool nope = false;
+	int seesaw;
 
 	nMotorEncoder[driveLeft] = 0;
 	//time1[T1] = 0;
 
 	while(SensorValue[IR] != 5)
 	{
-		//writeDebugStreamLine("%d", SensorValue[IR]);
+		//writeDebugStreamLine("%d", nMotorEncoder[driveLeft]);
 		writeDebugStreamLine("%d", nMotorEncoder[driveLeft]);
 		//if(time1[T1] > 6000)
 			//break;
@@ -115,11 +115,27 @@ task main()
 	//time1[T1] = 0;
 	motor[driveLeft] = 0;
 	motor[driveRight] = 0;
+	wait1Msec(500);
+
+	seesaw = nMotorEncoder[driveLeft];
+
+	if (nMotorEncoder[driveLeft] > 3100 && !nope)
+	{
+		while(nMotorEncoder[driveLeft] > (seesaw - 700))
+		{
+			motor[driveLeft] = -100;
+			motor[driveRight] = -100;
+		}
+	}
 	int temp = nMotorEncoder[driveLeft];
+
+	motor[driveLeft] = 0;
+	motor[driveRight] = 0;
+	wait1Msec(500);
 
 	if(!nope)
 	{
-		while(nMotorEncoder[driveLeft] < (temp+200))
+		while(nMotorEncoder[driveLeft] < (temp+100))
 		{
 			motor[driveLeft] = 100;
 			motor[driveRight] = 100;
@@ -152,7 +168,7 @@ task main()
 			motor[driveRight] = -100;
 		}
 
-		stahp(750);
+		stahp(500);
 	}
 	else
 	{
@@ -162,7 +178,7 @@ task main()
 			motor[driveRight] = -100;
 		}
 
-		stahp(750);
+		stahp(500);
 	}
 
 	turn(-30,75);
@@ -180,7 +196,7 @@ task main()
 
 	stahp(500);
 
-	turn(-65,75);
+	turn(-75,75);
 
 	nMotorEncoder[driveLeft] = 0;
 

@@ -63,7 +63,7 @@ task main()
 			motor[twirler] = 0;
 
 		if (abs(joystick.joy2_y2) > threshold) 				// > 20
-			 motor[plow] = joystick.joy2_y2; //* .9
+			 motor[plow] = joystick.joy2_y2 * .7;
 		/*else if (joystick.joy2_y2 < -threshold)		// < -20
 		{
 					motor[plow] = joystick.joy2_y2;
@@ -84,13 +84,13 @@ task main()
 		else if(joystick.joy2_y1 < -threshold)
 			servo[wrist] -= 5;
 		else if(joy2Btn(1))
-			servo[wrist] = 225v 	; //200 starting position
+			servo[wrist] = 225 	; //200 starting position
 		//servo[wrist] += 5;
 		else if(joy2Btn(4))
 			servo[wrist] = 255; // pickup position
 		//servo[wrist] -= 5;
 		else if(joy2Btn(3))
-			servo[wrist] = 5; //drop position
+			servo[wrist] = 0; //drop position
 
 		wait1Msec(20);
 	}
