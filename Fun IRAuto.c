@@ -66,7 +66,7 @@ void turn(int angle, short speed)  // Steven Mostovoy
 	motor[driveLeft] = 0;
 	motor[driveRight] = 0;
 }
-void initialization()
+void Initialization()
 {
 	motor[plow] = 75;
 	motor[armLeft] = 100;
@@ -85,7 +85,7 @@ void stahp (int time)
 task main()
 {
 	waitForStart();
-	initialization();
+	Initialization();
 	bool nope = false;
 	int seesaw;
 
@@ -135,7 +135,7 @@ task main()
 
 	if(!nope)
 	{
-		while(nMotorEncoder[driveLeft] < (temp+100))
+		while(nMotorEncoder[driveLeft] < (temp+50))  //100
 		{
 			motor[driveLeft] = 100;
 			motor[driveRight] = 100;
@@ -196,7 +196,7 @@ task main()
 
 	stahp(500);
 
-	turn(-75,75);
+	turn(-80,75);
 
 	nMotorEncoder[driveLeft] = 0;
 
@@ -207,7 +207,7 @@ task main()
 	}*/
 	motor[driveLeft] = -100;
 	motor[driveRight] = -100;
-	wait1Msec(1700);
+	wait1Msec(1850);
 
 	motor[driveLeft] = 0;
 	motor[driveRight] = 0;

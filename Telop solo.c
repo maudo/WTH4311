@@ -84,7 +84,7 @@ task main()
 		else if(joystick.joy2_y1 < -threshold)
 			servo[wrist] -= 5;
 		else if(joy2Btn(1))
-			servo[wrist] = 190 	; //200 starting position
+			servo[wrist] = 225 	; //200 starting position
 		//servo[wrist] += 5;
 		else if(joy2Btn(4))
 			servo[wrist] = 255; // pickup position
@@ -93,5 +93,8 @@ task main()
 			servo[wrist] = 0; //drop position
 
 		wait1Msec(20);
+
+		if joystick.joy1_TopHat(0)
+			motor[plow] = 70;
 	}
 }

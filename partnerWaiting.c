@@ -67,17 +67,22 @@ void turn(int angle, short speed)  // Steven Mostovoy
 	motor[driveRight] = 0;
 }
 
-task main()
+void Initialization()
 {
-	waitForStart();
-	wait1Msec(10000);
+	motor[plow] = 75;
 	motor[armLeft] = 100;
 	motor[armRight] = 100;
-	motor[plow] = 75;
 	wait1Msec(100);
 	motor[plow] = 0;
 	motor[armLeft] = 0;
 	motor[armRight] = 0;
+}
+
+task main()
+{
+	waitForStart();
+	//wait1Msec(14000);
+	Initialization();
 	bool nope = false;
 
 	nMotorEncoder[driveLeft] = 0;
@@ -98,7 +103,7 @@ task main()
 
 	//time1[T1] = 0;
 
-	while(abs(nMotorEncoder[driveLeft]) < 2050) //1800
+	while(abs(nMotorEncoder[driveLeft]) < 1800) //1800-2050
 		{
 			motor[driveLeft] = -100;
 			motor[driveRight] = 100;
@@ -146,15 +151,15 @@ task main()
 
 		motor[driveLeft] = 0;
 		motor[driveRight] = 0;
-		wait1Msec(750);
+		wait1Msec(500);
 	}
 
 	writeDebugStreamLine("%d", nMotorEncoder[driveLeft]);
 
 	servo[cube] = 0;
-	wait1Msec(1000);
+	wait1Msec(750);
 	servo[cube] = 125;
-	wait1Msec(1000);
+	wait1Msec(750);
 
 	nMotorEncoder[driveLeft] = 0;
 
@@ -166,7 +171,7 @@ task main()
 	motor[driveLeft] = 0;
 	motor[driveRight] = 0;
 
-	/*if(!nope)
+	if(!nope)
 	{
 		while(nMotorEncoder[driveLeft] > (-temp - 300))
 		{
@@ -189,7 +194,7 @@ task main()
 		motor[driveLeft] = 0;
 		motor[driveRight] = 0;
 		wait1Msec(750);
-	}*/
+	}
 
 	turn(-30,75);
 
@@ -208,7 +213,7 @@ task main()
 	motor[driveRight] = 0;
 	wait1Msec(500);
 
-	turn(-65,75);
+	turn(-75,75);
 
 	nMotorEncoder[driveLeft] = 0;
 
@@ -220,7 +225,7 @@ task main()
 
 	motor[driveLeft] = -100;
 	motor[driveRight] = -100;
-	wait1Msec(1500);
+	wait1Msec(1700);
 
 	motor[driveLeft] = 0;
 	motor[driveRight] = 0;

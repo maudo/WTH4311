@@ -119,7 +119,7 @@ task main()
 
 	if(!nope)
 	{
-		while(nMotorEncoder[driveLeft] < (temp+200))
+		while(nMotorEncoder[driveLeft] < (temp + 200))
 		{
 			motor[driveLeft] = 100;
 			motor[driveRight] = 100;
