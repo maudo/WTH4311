@@ -78,12 +78,20 @@ void Initialization()
 	motor[armRight] = 0;
 }
 
+void stahp (int time)
+{
+	motor[driveLeft] = 0;
+	motor[driveRight] = 0;
+	wait1Msec(time);
+}
+
 task main()
 {
 	waitForStart();
-	//wait1Msec(14000);
+	wait1Msec(12000);
 	Initialization();
 	bool nope = false;
+	int seesaw;
 
 	nMotorEncoder[driveLeft] = 0;
 
@@ -93,17 +101,11 @@ task main()
 			motor[driveRight] = 100;
 		}
 
-	motor[driveLeft] = 0;
-	motor[driveRight] = 0;
-	wait1Msec(200);
+	stahp(300);
 
 	nMotorEncoder[driveLeft] = 0;
 
-	//turn(-120,75);
-
-	//time1[T1] = 0;
-
-	while(abs(nMotorEncoder[driveLeft]) < 1800) //1800-2050
+	while(abs(nMotorEncoder[driveLeft]) < 1850) //1800-2050
 		{
 			motor[driveLeft] = -100;
 			motor[driveRight] = 100;
@@ -115,17 +117,16 @@ task main()
 	motor[driveRight] = 0;
 	nMotorEncoder[driveLeft] = 0;
 
-
-	while(SensorValue[IR] != 5)
+while(SensorValue[IR] != 5)
 	{
-		writeDebugStreamLine("%d", SensorValue[IR]);
 		//writeDebugStreamLine("%d", nMotorEncoder[driveLeft]);
+		writeDebugStreamLine("%d", nMotorEncoder[driveLeft]);
 		//if(time1[T1] > 6000)
 			//break;
 		//else
 		//{
 
-		if(nMotorEncoder[driveLeft] > 5250)
+		if(nMotorEncoder[driveLeft] > 5500)
 		{
 			nope = true;
 			break;
@@ -137,41 +138,51 @@ task main()
 	}
 
 	//time1[T1] = 0;
-	motor[driveLeft] = 0;
-	motor[driveRight] = 0;
+
+	stahp(250);
+
+	seesaw = nMotorEncoder[driveLeft];
+
+	if (nMotorEncoder[driveLeft] > 3100 && !nope)
+	{
+		while(nMotorEncoder[driveLeft] > (seesaw - 650))
+		{
+			motor[driveLeft] = -100;
+			motor[driveRight] = -100;
+		}
+	}
 	int temp = nMotorEncoder[driveLeft];
+
+	stahp(250);
 
 	if(!nope)
 	{
-		while(nMotorEncoder[driveLeft] < (temp+200))
+		while(nMotorEncoder[driveLeft] < (temp+25))  //100
 		{
 			motor[driveLeft] = 100;
 			motor[driveRight] = 100;
 		}
 
-		motor[driveLeft] = 0;
-		motor[driveRight] = 0;
-		wait1Msec(500);
+		stahp(500);
 	}
 
-	writeDebugStreamLine("%d", nMotorEncoder[driveLeft]);
-
 	servo[cube] = 0;
-	wait1Msec(750);
+	wait1Msec(500);
 	servo[cube] = 125;
-	wait1Msec(750);
-
-	nMotorEncoder[driveLeft] = 0;
+	wait1Msec(500);
 
 	while(SensorValue[Ultra] > 25)
 	{
+		//riteDebugStreamLine("%d", SensorValue[Ultra]);
 		motor[driveLeft] = -100;
 		motor[driveRight] = -100;
 	}
 	motor[driveLeft] = 0;
 	motor[driveRight] = 0;
 
-	if(!nope)
+	nMotorEncoder[driveLeft] = 0;
+
+	/*if(!nope)
 	{
 		while(nMotorEncoder[driveLeft] > (-temp - 300))
 		{
@@ -179,9 +190,7 @@ task main()
 			motor[driveRight] = -100;
 		}
 
-		motor[driveLeft] = 0;
-		motor[driveRight] = 0;
-		wait1Msec(750);
+		stahp(300);
 	}
 	else
 	{
@@ -191,29 +200,25 @@ task main()
 			motor[driveRight] = -100;
 		}
 
-		motor[driveLeft] = 0;
-		motor[driveRight] = 0;
-		wait1Msec(750);
-	}
+		stahp(300);
+	}*/
 
 	turn(-30,75);
 
 	nMotorEncoder[driveLeft] = 0;
-
 	/*while(nMotorEncoder[driveLeft] > -4500)
 	{
 		motor[driveLeft] = -100;
 		motor[driveRight] = -100;
 	}*/
+
 	motor[driveLeft] = -100;
 	motor[driveRight] = -100;
 	wait1Msec(1500);
 
-	motor[driveLeft] = 0;
-	motor[driveRight] = 0;
-	wait1Msec(500);
+	stahp(300);
 
-	turn(-75,75);
+	turn(-80,75);
 
 	nMotorEncoder[driveLeft] = 0;
 
@@ -222,10 +227,9 @@ task main()
 		motor[driveLeft] = -100;
 		motor[driveRight] = -100;
 	}*/
-
 	motor[driveLeft] = -100;
 	motor[driveRight] = -100;
-	wait1Msec(1700);
+	wait1Msec(1850);
 
 	motor[driveLeft] = 0;
 	motor[driveRight] = 0;

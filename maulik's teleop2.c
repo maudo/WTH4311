@@ -63,7 +63,7 @@ task main()
 			motor[twirler] = 0;
 
 		if (abs(joystick.joy2_y2) > threshold) 				// > 20
-			 motor[plow] = joystick.joy2_y2 * .7;
+			 motor[plow] = joystick.joy2_y2 * .9;
 		/*else if (joystick.joy2_y2 < -threshold)		// < -20
 		{
 					motor[plow] = joystick.joy2_y2;

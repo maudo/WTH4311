@@ -121,7 +121,7 @@ task main()
 
 	if (nMotorEncoder[driveLeft] > 3100 && !nope)
 	{
-		while(nMotorEncoder[driveLeft] > (seesaw - 700))
+		while(nMotorEncoder[driveLeft] > (seesaw - 650))
 		{
 			motor[driveLeft] = -100;
 			motor[driveRight] = -100;
@@ -135,7 +135,7 @@ task main()
 
 	if(!nope)
 	{
-		while(nMotorEncoder[driveLeft] < (temp+50))  //100
+		while(nMotorEncoder[driveLeft] < (temp+25))  //100
 		{
 			motor[driveLeft] = 100;
 			motor[driveRight] = 100;
