@@ -196,7 +196,7 @@ task main()
 
 	stahp(500);
 
-	turn(-80,75);
+	turn(-75,75);
 
 	nMotorEncoder[driveLeft] = 0;
 
