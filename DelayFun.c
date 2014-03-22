@@ -85,6 +85,7 @@ void stahp (int time)
 task main()
 {
 	waitForStart();
+	wait1Msec(12000);
 	Initialization();
 	bool nope = false;
 	int seesaw;
