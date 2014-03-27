@@ -162,7 +162,7 @@ task main()
 
 	if(!nope)
 	{
-		while(nMotorEncoder[driveLeft] > (-temp- 130))
+		while(nMotorEncoder[driveLeft] > (-temp- 80))
 		{
 			motor[driveLeft] = -100;
 			motor[driveRight] = -100;
@@ -181,9 +181,9 @@ task main()
 		stahp(500);
 	}
 
-	turn(-4,75);
+	turn(-30,75);
 
-	//nMotorEncoder[driveLeft] = 0;
+	nMotorEncoder[driveLeft] = 0;
 	/*while(nMotorEncoder[driveLeft] > -4500)
 	{
 		motor[driveLeft] = -100;
@@ -192,11 +192,11 @@ task main()
 
 	motor[driveLeft] = -100;
 	motor[driveRight] = -100;
-	wait1Msec(1485);
+	wait1Msec(1500);
 
 	stahp(500);
 
-	turn(-40,75);
+	turn(-70,75);
 
 	nMotorEncoder[driveLeft] = 0;
 
@@ -207,7 +207,7 @@ task main()
 	}*/
 	motor[driveLeft] = -100;
 	motor[driveRight] = -100;
-	wait1Msec(1215);
+	wait1Msec(1850);
 
 	motor[driveLeft] = 0;
 	motor[driveRight] = 0;
