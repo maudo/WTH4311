@@ -106,7 +106,7 @@ task main()
 	//turn(-103.5,75);
 	nMotorEncoder[driveLeft] = 0;
 
-	while(abs(nMotorEncoder[driveLeft]) < 1970) //1800-2050
+	while(abs(nMotorEncoder[driveLeft]) < 1935) //1800-2050
 		{
 			motor[driveLeft] = -100;
 			motor[driveRight] = 100;
@@ -119,7 +119,7 @@ task main()
 while(SensorValue[IR] != 5)
 	{
 		//writeDebugStreamLine("%d", nMotorEncoder[driveLeft]);
-		writeDebugStreamLine("%d", nMotorEncoder[driveLeft]);
+
 		//if(time1[T1] > 6000)
 			//break;
 		//else
@@ -170,18 +170,18 @@ while(SensorValue[IR] != 5)
 	servo[cube] = 125;
 	wait1Msec(1000);
 
-	while(SensorValue[Ultra] > 25)
+	/*while(SensorValue[Ultra] > 25)
 	{
 		//riteDebugStreamLine("%d", SensorValue[Ultra]);
 		motor[driveLeft] = -100;
 		motor[driveRight] = -100;
 	}
 	motor[driveLeft] = 0;
-	motor[driveRight] = 0;
+	motor[driveRight] = 0;*/
 
 	nMotorEncoder[driveLeft] = 0;
 
-	/*if(!nope)
+	if(!nope)
 	{
 		while(nMotorEncoder[driveLeft] > (-temp - 300))
 		{
@@ -200,9 +200,9 @@ while(SensorValue[IR] != 5)
 		}
 
 		stahp(300);
-	}*/
+	}
 
-	turn(-30,75);
+	turn(-4,75);
 
 	nMotorEncoder[driveLeft] = 0;
 	/*while(nMotorEncoder[driveLeft] > -4500)
@@ -213,11 +213,11 @@ while(SensorValue[IR] != 5)
 
 	motor[driveLeft] = -100;
 	motor[driveRight] = -100;
-	wait1Msec(1500);
+	wait1Msec(1485);
 
 	stahp(300);
 
-	turn(-65,75);
+	turn(-40,75);
 
 	nMotorEncoder[driveLeft] = 0;
 
@@ -228,7 +228,7 @@ while(SensorValue[IR] != 5)
 	}*/
 	motor[driveLeft] = -100;
 	motor[driveRight] = -100;
-	wait1Msec(1850);
+	wait1Msec(1215);
 
 	motor[driveLeft] = 0;
 	motor[driveRight] = 0;
