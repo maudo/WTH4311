@@ -106,7 +106,7 @@ task main()
 	//turn(-103.5,75);
 	nMotorEncoder[driveLeft] = 0;
 
-	while(abs(nMotorEncoder[driveLeft]) < 1935) //1800-2050
+	while(abs(nMotorEncoder[driveLeft]) < 2350) //1800-2050
 		{
 			motor[driveLeft] = -100;
 			motor[driveRight] = 100;
@@ -144,7 +144,7 @@ while(SensorValue[IR] != 5)
 
 	if (nMotorEncoder[driveLeft] > 3100 && !nope)
 	{
-		while(nMotorEncoder[driveLeft] > (seesaw - 650))
+		while(nMotorEncoder[driveLeft] > (seesaw - 800))
 		{
 			motor[driveLeft] = -100;
 			motor[driveRight] = -100;
@@ -183,7 +183,7 @@ while(SensorValue[IR] != 5)
 
 	if(!nope)
 	{
-		while(nMotorEncoder[driveLeft] > (-temp - 300))
+		while(nMotorEncoder[driveLeft] > (-temp + 50))
 		{
 			motor[driveLeft] = -100;
 			motor[driveRight] = -100;
@@ -202,7 +202,7 @@ while(SensorValue[IR] != 5)
 		stahp(300);
 	}
 
-	turn(-4,75);
+	turn(-2,75);
 
 	nMotorEncoder[driveLeft] = 0;
 	/*while(nMotorEncoder[driveLeft] > -4500)

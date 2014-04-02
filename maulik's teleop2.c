@@ -27,6 +27,7 @@ task main()
 	while(true)
 	{
 		getJoystickSettings(joystick);
+		//servoChangeRate[wrist] = 10;
 
 		leftSpeed = joystick.joy1_y1;
 		rightSpeed = joystick.joy1_y2;
@@ -62,8 +63,8 @@ task main()
 		else
 			motor[twirler] = 0;
 
-		if (abs(joystick.joy2_y2) > threshold) 				// > 20
-			 motor[plow] = joystick.joy2_y2;
+		if (abs(joystick.joy2_y1) > threshold) 				// > 20
+			 motor[plow] = joystick.joy2_y1;
 		/*else if (joystick.joy2_y2 < -threshold)		// < -20
 		{
 					motor[plow] = joystick.joy2_y2;
@@ -79,18 +80,27 @@ task main()
 		else if(joy2Btn(10))
 			servo[auto]+=5;
 
-		if(joystick.joy2_y1 > threshold)
+		if(joystick.joy2_y2 > threshold)
 			servo[wrist] += 5;
-		else if(joystick.joy2_y1 < -threshold)
+		else if(joystick.joy2_y2 < -threshold)
 			servo[wrist] -= 5;
 		else if(joy2Btn(1))
-			servo[wrist] = 220 	; //200 starting position
+		{
+			servoChangeRate[wrist] = 10;
+			servo[wrist] = 190; //200 starting position
+		}
 		//servo[wrist] += 5;
 		else if(joy2Btn(4))
+		{
+			servoChangeRate[wrist] = 5;
 			servo[wrist] = 255; // pickup position
+		}
 		//servo[wrist] -= 5;
 		else if(joy2Btn(3))
+		{
+			servoChangeRate[wrist] = 10;
 			servo[wrist] = 0; //drop position
+		}
 
 		wait1Msec(20);
 	}
